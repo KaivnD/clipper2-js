@@ -1,0 +1,40 @@
+--- clipper2.js 2022-12-22 05:33:13.320405013 +0000
++++ clipper2.mjs        2022-12-22 05:34:17.166562023 +0000
+@@ -1,7 +1,7 @@
+ 
+ var clipper2 = (() => {
+-  var _scriptDir = typeof document !== 'undefined' && document.currentScript ? document.currentScript.src : undefined;
+-  if (typeof __filename !== 'undefined') _scriptDir = _scriptDir || __filename;
++  var _scriptDir = import.meta.url;
++  
+   return (
+ function(clipper2) {
+   clipper2 = clipper2 || {};
+@@ -1022,10 +1022,15 @@
+ }
+ 
+ var wasmBinaryFile;
++if (Module['locateFile']) {
+   wasmBinaryFile = 'clipper2.wasm';
+   if (!isDataURI(wasmBinaryFile)) {
+     wasmBinaryFile = locateFile(wasmBinaryFile);
+   }
++} else {
++  // Use bundler-friendly `new URL(..., import.meta.url)` pattern; works in browsers too.
++  wasmBinaryFile = new URL('clipper2.wasm', import.meta.url).toString();
++}
+ 
+ function getBinary(file) {
+   try {
+@@ -4641,9 +4646,4 @@
+ }
+ );
+ })();
+-if (typeof exports === 'object' && typeof module === 'object')
+-  module.exports = clipper2;
+-else if (typeof define === 'function' && define['amd'])
+-  define([], function() { return clipper2; });
+-else if (typeof exports === 'object')
+-  exports["clipper2"] = clipper2;
++export default clipper2;
+\ No newline at end of file
