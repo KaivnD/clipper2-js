@@ -19,6 +19,36 @@ export enum FillRule {
 	Positive = 2,
 	Negative = 3,
 }
+export enum JoinType {
+	Square = 0,
+	Round = 1,
+	Miter = 2,
+}
+export enum EndType {
+	Polygon = 0,
+	Joined = 1,
+	Butt = 2,
+	Square = 3,
+	Round = 4,
+}
+export class Path64 {
+constructor();
+	push_back(arg0: unknown): void;
+	resize(arg0: UnsignedLong, arg1: unknown): void;
+	size(): UnsignedLong;
+	get(arg0: UnsignedLong): any;
+	set(arg0: UnsignedLong, arg1: unknown): boolean;
+	delete(): void;
+}
+export class Paths64 {
+constructor();
+	push_back(arg0: Path64): void;
+	resize(arg0: UnsignedLong, arg1: Path64): void;
+	size(): UnsignedLong;
+	get(arg0: UnsignedLong): any;
+	set(arg0: UnsignedLong, arg1: Path64): boolean;
+	delete(): void;
+}
 export class PathD {
 constructor();
 	push_back(arg0: unknown): void;
@@ -39,10 +69,26 @@ constructor();
 }
 export interface ClipperLib {
 	union(arg0: PathsD, arg1: FillRule, arg2: Int): PathsD;
+	union(arg0: Paths64, arg1: FillRule): Paths64;
+	union2(arg0: PathsD, arg1: PathsD, arg2: FillRule, arg3: Int): PathsD;
+	union2(arg0: Paths64, arg1: Paths64, arg2: FillRule): Paths64;
+	intersect(arg0: PathsD, arg1: PathsD, arg2: FillRule, arg3: Int): PathsD;
+	intersect(arg0: Paths64, arg1: Paths64, arg2: FillRule): Paths64;
+	difference(arg0: PathsD, arg1: PathsD, arg2: FillRule, arg3: Int): PathsD;
+	difference(arg0: Paths64, arg1: Paths64, arg2: FillRule): Paths64;
+	xor(arg0: PathsD, arg1: PathsD, arg2: FillRule, arg3: Int): PathsD;
+	xor(arg0: Paths64, arg1: Paths64, arg2: FillRule): Paths64;
+	inflatePaths(arg0: PathsD, arg1: Double, arg2: JoinType, arg3: EndType, arg4: Double, arg5: Int): PathsD;
+	inflatePaths(arg0: Paths64, arg1: Double, arg2: JoinType, arg3: EndType, arg4: Double): Paths64;
 	makePathD(arg0: string): PathD;
+	makePath(arg0: string): Path64;
+	Path64: typeof Path64
+	Paths64: typeof Paths64
 	PathD: typeof PathD
 	PathsD: typeof PathsD
 	FillRule: typeof FillRule
+	JoinType: typeof JoinType
+	EndType: typeof EndType
 }
 declare function factory(): Promise<ClipperLib>;
 export default factory;
