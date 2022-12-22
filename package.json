@@ -1,6 +1,6 @@
 {
   "name": "clipper2",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "files": [
     "dist",
@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "xmake f -p wasm -y -m release && xmake && vite build && pnpm dts",
-    "dts": "tsembind build/wasm/wasm32/release/clipper2.js --hint dts-gen.config.js > clipper2.d.ts",
+    "dts": "node --experimental-wasm-bigint node_modules/tsembind/src/cmd.js build/wasm/wasm32/release/clipper2.js --hint dts-gen.config.js > clipper2.d.ts",
     "test": "jest"
   },
   "keywords": [],

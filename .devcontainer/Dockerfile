@@ -1,4 +1,4 @@
-FROM emscripten/emsdk:latest
+FROM emscripten/emsdk:3.1.20
 
 # 更改镜像为阿里镜像源
 RUN rm -f /etc/apt/sources.list

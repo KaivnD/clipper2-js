@@ -78,7 +78,7 @@ export interface ClipperLib {
 	difference(arg0: Paths64, arg1: Paths64, arg2: FillRule): Paths64;
 	xor(arg0: PathsD, arg1: PathsD, arg2: FillRule, arg3: Int): PathsD;
 	xor(arg0: Paths64, arg1: Paths64, arg2: FillRule): Paths64;
-	inflatePaths(arg0: PathsD, arg1: Double, arg2: JoinType, arg3: EndType, arg4: Double, arg5: Int): PathsD;
+	inflatePaths(arg0: PathsD, arg1: Double, arg2: JoinType, arg3: EndType, arg4: Double, arg5: Double): PathsD;
 	inflatePaths(arg0: Paths64, arg1: Double, arg2: JoinType, arg3: EndType, arg4: Double): Paths64;
 	makePathD(arg0: string): PathD;
 	makePath(arg0: string): Path64;

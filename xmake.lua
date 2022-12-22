@@ -12,6 +12,7 @@ target "clipper2-js"
     add_ldflags("-s MODULARIZE=1 -s EXPORT_NAME=clipper2")
     -- add_ldflags("-s EXPORT_ES6=1")
     -- add_ldflags("-s WASM=0")
+    add_ldflags("-s WASM_BIGINT")
     add_ldflags("-s ALLOW_MEMORY_GROWTH=1 -lembind")
     -- set_targetdir("./dist")
     add_includedirs("3rdparty/Clipper2/CPP/Clipper2Lib/include")

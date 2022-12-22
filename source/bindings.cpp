@@ -38,9 +38,15 @@ EMSCRIPTEN_BINDINGS(clipper2)
         //
         ;
 
-    value_object<PointD>("PointD")
-        .field("x", &PointD::x)
-        .field("y", &PointD::y)
+    value_array<Point64>("Point64")
+        .element(&Point64::x)
+        .element(&Point64::y)
+        //
+        ;
+
+    value_array<PointD>("PointD")
+        .element(&PointD::x)
+        .element(&PointD::y)
         //
         ;
 
@@ -66,7 +72,7 @@ EMSCRIPTEN_BINDINGS(clipper2)
     function("xor", select_overload<Paths64(const Paths64 &, const Paths64 &, FillRule)>(&Xor));
 
     function("inflatePaths", select_overload<PathsD(const PathsD &, double,
-                                                    JoinType, EndType, double, int)>(&InflatePaths));
+                                                    JoinType, EndType, double, double)>(&InflatePaths));
     function("inflatePaths", select_overload<Paths64(const Paths64 &, double,
                                                      JoinType, EndType, double)>(&InflatePaths));
     function("makePathD", &MakePathD);
