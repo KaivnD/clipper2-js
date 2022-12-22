@@ -35,9 +35,9 @@ EMSCRIPTEN_BINDINGS(clipper2)
         //
         ;
 
-    value_array<PointD>("PointD")
-        .element(&PointD::x)
-        .element(&PointD::y)
+    value_object<PointD>("PointD")
+        .field("x", &PointD::x)
+        .field("y", &PointD::y)
         //
         ;
 
